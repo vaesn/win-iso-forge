@@ -1,0 +1,160 @@
+name: update-win10-22h2-ent-x64
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "11 16 14,29 * *"
+permissions:
+  contents: write
+  actions: write
+env:
+  VER: "win10-22h2-ent-x64"
+  OUT_PATH: 'D:\dist'
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+jobs:
+  update-win10-22h2-ent-x64:
+    runs-on: windows-latest
+    timeout-minutes: 300
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+
+      - name: 1. Checkout Win_ISO_Patching_Scripts
+        shell: pwsh
+        working-directory: .
+        run: |
+          $maxAttempts = 5
+          $delaySeconds = 30
+          $repoUrl = 'https://github.com/adavak/Win_ISO_Patching_Scripts.git'
+          for ($i = 1; $i -le $maxAttempts; $i++) {
+            Write-Host "Cloning patch scripts (attempt $i/$maxAttempts)..."
+            if (Test-Path patcherScripts) { Remove-Item patcherScripts -Recurse -Force }
+            & git clone --depth 1 $repoUrl patcherScripts
+            if ($LASTEXITCODE -eq 0) {
+              Write-Host "Clone succeeded"
+              break
+            }
+            Write-Host "git clone failed with exit code $LASTEXITCODE"
+            if ($i -lt $maxAttempts) {
+              Write-Host "Retrying in $delaySeconds seconds..."
+              Start-Sleep -Seconds $delaySeconds
+            } else {
+              throw "git clone failed after $maxAttempts attempts"
+            }
+          }
+
+      - name: 2. Download from Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: pwsh
+        working-directory: ./patcherScripts
+        run: |
+          gh release download win10-22h2-x64 --repo vaesn/win-iso-archive --pattern "*d4e92df7.7z.*" --dir ./
+          7z x *.7z.001 -y
+          Start-Sleep -Seconds 3
+          Rename-Item -Path "*d4e92df7.iso" -NewName "win10-22h2-x64.iso"
+          Remove-Item -Path "*d4e92df7.7z.*" -Force
+          Move-Item -Path "..\W10UI.ini" -Destination ".\W10UI.ini" -Force
+
+      - name: 3. Update By Win_ISO_Patching_Scripts
+        shell: pwsh
+        working-directory: ./patcherScripts
+        run: |
+          Move-Item -Path "..\win11-autounattend.xml" -Destination ".\autounattend.xml" -Force
+          $line = @'
+          set "MY_WIM=%~dp0%ISODir%\sources\install.wim"
+          set "MY_NEW_WIM=%~dp0%ISODir%\sources\install_new.wim"
+          if exist "%~dp0%isofile%" del /f /q "%~dp0%isofile%"
+          "%dism%" /English /Export-Image /SourceImageFile:"%MY_WIM%" /SourceIndex:2 /DestinationImageFile:"%MY_NEW_WIM%" /Compress:max || exit /b 1
+          if exist "%MY_WIM%" del /f /q "%MY_WIM%"
+          "%dism%" /English /Get-WimInfo /WimFile:"%MY_NEW_WIM%"
+          move /y "%MY_NEW_WIM%" "%MY_WIM%"
+          if exist "%~dp0autounattend.xml" copy /y "%~dp0autounattend.xml" "%~dp0%ISODir%\autounattend.xml" >nul
+          '@
+          $line = ($line -replace "`r?`n", "`r`n").TrimEnd("`r", "`n")
+
+          $charset = [IO.File]::ReadAllText('Start.cmd')
+          if ($charset -notmatch 'MY_WIM') {
+              [IO.File]::WriteAllText('Start.cmd', $charset.Replace('call W10UI.cmd', "$line`r`ncall W10UI.cmd"))
+          }
+          Select-String -Path Start.cmd -Pattern 'MY_WIM' -Context 0,8
+
+          & cmd /c "(echo 9 & echo 9 & echo 9) | Start.cmd"
+
+      - name: 4. Split Archive
+        working-directory: .
+        shell: pwsh
+        run: |
+          Get-Item ".\patcherScripts" -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+          pwsh -NoProfile -ExecutionPolicy Bypass -File .\utils\split-archive.ps1 `
+            -SrcDir       "D:\dist" `
+            -DistDir      "D:\split" `
+            -RevisionName "win10-22h2-ent-x64"
+
+      - name: 5. Delete Old Release
+        if: ${{ success() }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: gh release delete "${{ env.REVISION_NAME }}" --cleanup-tag -y || true
+
+      - name: 6. Delete past completed runs of this workflow
+        if: ${{ success() }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh run list \
+            --repo "${{ github.repository }}" \
+            --workflow "${{ github.workflow }}" \
+            --limit 20 \
+            --json databaseId,status \
+            --jq '.[] | select(.status=="completed") | .databaseId' | while read -r run_id; do
+              if [ -z "$run_id" ]; then continue; fi
+              if [ "$run_id" = "${{ github.run_id }}" ]; then continue; fi
+              gh run delete "$run_id" --repo "${{ github.repository }}" || true
+            done
+
+      - name: 7. Build New Release
+        uses: softprops/action-gh-release@v3
+        env:
+          GH_TOKEN: ${{ github.token }}
+        with:
+          fail_on_unmatched_files: false
+          overwrite_files: true
+          tag_name: ${{ env.REVISION_NAME }}
+          name: ${{ env.REVISION_NAME }}-${{ env.ISO_REVISION }}
+          files: |
+            D:\split\*.7z.0[0-9][0-9]
+          body: |
+            ## Windows 10 22H2 Enterprise x64 zh_CN ${{ env.ISO_REVISION }}
+            - **ARTIFACT**: ${{ env.ISO_NAME }}
+            - **Version**: ${{ env.ISO_REVISION }}
+            - **SHA256**: ${{ env.SHA256 }}
+            - **Language**: zh_CN
+            - **File Size**: ${{ env.ISO_SIZEMB }} ， ${{ env.ISO_SIZEGB }}
+            - **Volume Size**: ${{ env.VOLUME_SIZE }}
+            - **Volume Count**: ${{ env.PART_COUNT }}
+            ---
+            ${{ env.DOWNLOAD_LINKS }}
+            ---
+
+      - name: 8. Update README
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -ExecutionPolicy Bypass -File .\utils\update-readme.ps1 -Marker "win10-22h2-ent-x64"
+
+      - name: 9. Reset Main Branch
+        if: ${{ success() }}
+        run: |
+          git checkout --orphan temp_branch
+          git add -A
+          git commit -m "fix"
+          git push --force origin temp_branch:main
+          
