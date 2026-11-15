@@ -42,6 +42,9 @@
 ### *Windows 10 LTSB 2016 x64*
 
 <!-- win10-ltsb2016-x64 -->
+[14393.9688.261109-0117.RS1_RELEASE_CLIENT_X64FRE_ZH-CN_fc6e04a3.ISO](https://github.com/vaesn/win-iso-forge/releases/tag/win10-ltsb2016-x64)
+
+(2026-11-15 01:41:23 UTC)
 <!-- /win10-ltsb2016-x64 -->
 
 ### *Windows 7 Ultimate SP1 x64*
