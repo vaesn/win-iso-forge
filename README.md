@@ -12,6 +12,9 @@
 ### *Windows 11 26H2 Education x64*
 
 <!-- win11-26h2-edu-x64 -->
+[26300.9974.261108-1239.26H2_GE_RELEASE_SVC_PROD1_CLIENT_X64FRE_ZH-CN_fde9a038.ISO](https://github.com/vaesn/win-iso-forge/releases/tag/win11-26h2-edu-x64)
+
+(2026-11-15 02:48:42 UTC)
 <!-- /win11-26h2-edu-x64 -->
 
 ### *Windows 11 LTSC 2024 x64*
