@@ -22,6 +22,9 @@
 ### *Windows 10 22H2 Enterprise x64*
 
 <!-- win10-22h2-ent-x64 -->
+[19045.7850.261111-2319.22H2_RELEASE_SVC_IM_CLIENT_X64FRE_ZH-CN_4397a911.ISO](https://github.com/vaesn/win-iso-forge/releases/tag/win10-22h2-ent-x64)
+
+(2026-11-15 02:25:45 UTC)
 <!-- /win10-22h2-ent-x64 -->
 
 ### *Windows 10 22H2 Education x64*
