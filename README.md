@@ -17,6 +17,9 @@
 ### *Windows 11 LTSC 2024 x64*
 
 <!-- win11-ltsc2024-x64 -->
+[26300.9974.261108-1239.26H2_GE_RELEASE_SVC_PROD1_CLIENT_X64FRE_ZH-CN_87c2f2eb.ISO](https://github.com/vaesn/win-iso-forge/releases/tag/win11-ltsc2024-x64)
+
+(2026-11-15 02:33:26 UTC)
 <!-- /win11-ltsc2024-x64 -->
 
 ### *Windows 10 22H2 Enterprise x64*
