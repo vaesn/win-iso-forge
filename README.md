@@ -41,6 +41,9 @@
 ### *Windows 10 LTSC 2021 x64*
 
 <!-- win10-ltsc2021-x64 -->
+[19044.7850.261111-2319.21H2_RELEASE_SVC_IM_CLIENT_X64FRE_ZH-CN_7f10c764.ISO](https://github.com/vaesn/win-iso-forge/releases/tag/win10-ltsc2021-x64)
+
+(2026-11-15 02:37:42 UTC)
 <!-- /win10-ltsc2021-x64 -->
 
 ### *Windows 10 LTSC 2019 x64*
