@@ -37,6 +37,9 @@
 ### *Windows 10 LTSC 2019 x64*
 
 <!-- win10-ltsc2019-x64 -->
+[17763.9488.261112-0041.RS5_RELEASE_SVC_IM_CLIENT_X64FRE_ZH-CN_4a244747.ISO](https://github.com/vaesn/win-iso-forge/releases/tag/win10-ltsc2019-x64)
+
+(2026-11-15 02:02:24 UTC)
 <!-- /win10-ltsc2019-x64 -->
 
 ### *Windows 10 LTSB 2016 x64*
