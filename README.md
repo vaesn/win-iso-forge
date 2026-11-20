@@ -1,0 +1,122 @@
+# windows-iso-forge
+
+
+
+## UPDATE
+
+### *Windows 11 26H2 Enterprise x64*
+
+<!-- win11-26h2-ent-x64 -->
+[26300.9974.261108-1239.26H2_GE_RELEASE_SVC_PROD1_CLIENT_X64FRE_ZH-CN_b1ff6edb.ISO](https://github.com/vaesn/win-iso-forge/releases/tag/win11-26h2-ent-x64)
+
+(2026-11-15 02:49:29 UTC)
+<!-- /win11-26h2-ent-x64 -->
+
+### *Windows 11 26H2 Education x64*
+
+<!-- win11-26h2-edu-x64 -->
+[26300.9974.261108-1239.26H2_GE_RELEASE_SVC_PROD1_CLIENT_X64FRE_ZH-CN_919b7559.ISO](https://github.com/vaesn/win-iso-forge/releases/tag/win11-26h2-edu-x64)
+
+(2026-11-15 05:13:45 UTC)
+<!-- /win11-26h2-edu-x64 -->
+
+### *Windows 11 LTSC 2024 x64*
+
+<!-- win11-ltsc2024-x64 -->
+[26300.9974.261108-1239.26H2_GE_RELEASE_SVC_PROD1_CLIENT_X64FRE_ZH-CN_87c2f2eb.ISO](https://github.com/vaesn/win-iso-forge/releases/tag/win11-ltsc2024-x64)
+
+(2026-11-15 02:33:26 UTC)
+<!-- /win11-ltsc2024-x64 -->
+
+### *Windows 10 22H2 Enterprise x64*
+
+<!-- win10-22h2-ent-x64 -->
+[19045.7850.261111-2319.22H2_RELEASE_SVC_IM_CLIENT_X64FRE_ZH-CN_4397a911.ISO](https://github.com/vaesn/win-iso-forge/releases/tag/win10-22h2-ent-x64)
+
+(2026-11-15 02:25:45 UTC)
+<!-- /win10-22h2-ent-x64 -->
+
+### *Windows 10 22H2 Education x64*
+
+<!-- win10-22h2-edu-x64 -->
+<!-- /win10-22h2-edu-x64 -->
+
+### *Windows 10 LTSC 2021 x64*
+
+<!-- win10-ltsc2021-x64 -->
+[19044.7850.261111-2319.21H2_RELEASE_SVC_IM_CLIENT_X64FRE_ZH-CN_7f10c764.ISO](https://github.com/vaesn/win-iso-forge/releases/tag/win10-ltsc2021-x64)
+
+(2026-11-15 02:37:42 UTC)
+<!-- /win10-ltsc2021-x64 -->
+
+### *Windows 10 LTSC 2019 x64*
+
+<!-- win10-ltsc2019-x64 -->
+[17763.9488.261112-0041.RS5_RELEASE_SVC_IM_CLIENT_X64FRE_ZH-CN_4a244747.ISO](https://github.com/vaesn/win-iso-forge/releases/tag/win10-ltsc2019-x64)
+
+(2026-11-15 02:02:24 UTC)
+<!-- /win10-ltsc2019-x64 -->
+
+### *Windows 10 LTSB 2016 x64*
+
+<!-- win10-ltsb2016-x64 -->
+[14393.9688.261109-0117.RS1_RELEASE_CLIENT_X64FRE_ZH-CN_fc6e04a3.ISO](https://github.com/vaesn/win-iso-forge/releases/tag/win10-ltsb2016-x64)
+
+(2026-11-15 01:41:23 UTC)
+<!-- /win10-ltsb2016-x64 -->
+
+### *Windows 7 Ultimate SP1 x64*
+
+<!-- win7-ult-sp1-x64 -->
+[cn-win7-ult-sp1-x64-UpdatePack7R2_f87938b0.iso](https://github.com/vaesn/win-iso-forge/releases/tag/win7-ult-sp1-x64)
+
+(2026-11-12 05:33:16 UTC)
+<!-- /win7-ult-sp1-x64 -->
+
+
+
+## ORIGINAL
+
+| Version | Original |
+| :----------------------- | :----------------------------------------------------------- |
+| Windows 10 LTSB 2016 x64 | [cn_windows_10_enterprise_2016_ltsb_x64_dvd_9060409.iso](https://ntriver.org/drive?cn_windows_10_enterprise_2016_ltsb_x64_dvd_9060409.iso) |
+| Windows 10 LTSC 2019 x64 | [cn_windows_10_enterprise_ltsc_2019_x64_dvd_9c09ff24.iso](https://ntriver.org/drive?cn_windows_10_enterprise_ltsc_2019_x64_dvd_9c09ff24.iso) |
+| Windows 10 LTSC 2021 x64 | [zh-cn_windows_10_enterprise_ltsc_2021_x64_dvd_033b7312.iso](https://ntriver.org/drive?zh-cn_windows_10_enterprise_ltsc_2021_x64_dvd_033b7312.iso) |
+| Windows 11 LTSC 2024 x64 | [zh-cn_windows_11_enterprise_ltsc_2024_x64_dvd_cff9cd2d.iso](https://ntriver.org/drive?zh-cn_windows_11_enterprise_ltsc_2024_x64_dvd_cff9cd2d.iso) |
+| Windows 11 26H2 x64 | [zh-cn_windows_11_business_editions_version_26h2_x64_dvd_74d48a06.iso](https://ntriver.org/drive?zh-cn_windows_11_business_editions_version_26h2_x64_dvd_74d48a06.iso) |
+| Windows 10 22H2 x64 | [zh-cn_windows_10_business_editions_version_22h2_updated_oct_2025_x64_dvd_d4e92df7.iso](https://ntriver.org/drive?zh-cn_windows_10_business_editions_version_22h2_updated_oct_2025_x64_dvd_d4e92df7.iso) |
+| Windows 7 Ultimate SP1 x64 | [cn_windows_7_ultimate_with_sp1_x64_dvd_u_677408.iso](https://ntriver.org/drive?cn_windows_7_ultimate_with_sp1_x64_dvd_u_677408.iso) |
+
+
+
+## LINK
+
+- [Microsoft Activation Scripts](https://massgrave.dev)
+
+- [NTLite](https://ntlite.com)
+
+- [Winhance](https://winhance.net)
+
+- [winutil](https://github.com/christitustech/winutil)
+
+- [UUP dump](https://uupdump.net)
+
+- [Generate autounattend.xml files for Windows 10/11](https://schneegans.de/windows/unattend-generator)
+
+- [Win_ISO_Patching_Scripts](https://github.com/adavak/Win_ISO_Patching_Scripts)
+
+- [ChangeWindows](https://changewindows.org/platforms/pc)
+
+- [uup-dump-build-and-get-windows-iso](https://github.com/marcinmajsc/uup-dump-build-and-get-windows-iso)
+
+- [Fido](https://github.com/pbatard/Fido)
+
+- [Rufus](https://github.com/pbatard/rufus)
+
+- [Ventoy](https://github.com/ventoy/Ventoy)
+
+- [supermium](https://github.com/win32ss/supermium)
+
+- [NTriver.org](https://ntriver.org/)
+
+- [files.rg-adguard.net](https://files.rg-adguard.net/)
